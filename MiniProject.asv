@@ -12,17 +12,20 @@
 % nSamps = sFreq*(endTime-startTime);
 % nRegions = nPts + 1;
 % t=linspace(startTime,endTime,nSamps);
+t = linspace(0,20,1*(20));
 
 
-t = linspace(0,10,1*(20));
-[n,f] = ramp(0,-4, t);
-plot(n,f)
+% plot(ramp(1,0))
+y = 1 * t - 1;
+plot(t,y);
 
 function [n,f] = ramp(slope, intercept, interval)
+    global t;
     if slope == 0
-        error("slope value cannot be 0 in ramp signal");
+        error("slope value cannot be 0");
+    else
+        n = t(interval(0);
+        f = slope * n - intercept;
     end
-    n = interval;
-    f = slope * n + intercept;
 end
 
