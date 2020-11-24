@@ -17,4 +17,4 @@ t=linspace(startTime,endTime,nSamps);
 
 
 
-
+function 
