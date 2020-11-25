@@ -5,9 +5,10 @@ To clone code from the cloud to local pc (used only once)
 `git pull origin`
 2. after adding/ changing code and **testing** it
 `git add .`
-`git commit -am "{descreptive msg of changes}"`
+`git commit -am "{descriptive msg of changes}"`
 3. to push local changes to the cloud
 `git push origin`
+
 and repeat from 1-3
 
 
