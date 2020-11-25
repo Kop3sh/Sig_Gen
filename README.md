@@ -5,7 +5,6 @@ To clone code from the cloud to local pc (used only once)
 `git pull origin`
 2. after adding/ changing code and **testing** it, change `[ ]` to `[x]` in README.md file
 `git add .`
-
 `git commit -am "{descriptive msg of changes}"`
 3. to push local changes to the cloud
 `git push origin`
