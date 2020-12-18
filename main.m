@@ -30,10 +30,11 @@ if nPts
 end
 
 
-% calculates the time interval of each signal region
-for i = 1:nRegions
+i = 1;
+while i <= nRegions
+%    calculates the time interval of each signal region
     if i == 1
-        if nPts~=0
+        if nPts ~= 0
             t = linspace(startTime,brPts(i),(brPts(i)-startTime)*sFreq);
         else
             t = t_total;
@@ -45,7 +46,7 @@ for i = 1:nRegions
     end
     
 %     gets the signal type for the current iteration of time interval
-    sigNum = input('Enter number of the wanted signal\n 1.DC\n 2.Ramp\n 3.General Order Polynomial\n 4.Exponential\n 5.Sinusoidal\n');
+    sigNum = input('\n\nEnter number of the wanted signal\n 1.DC\n 2.Ramp\n 3.General Order Polynomial\n 4.Exponential\n 5.Sinusoidal\n');
     switch sigNum
         case 1
 %             DC
@@ -77,7 +78,8 @@ for i = 1:nRegions
             tempSig = amp*sin(2*pi*freq*t + ph);
         otherwise
 %             error handling must be handled
-            fprintf('Invalid signal' );
+            fprintf('Invalid signal type (number)\nEnter an int between 1 and 5\n');
+            continue;
     end
     
 %    appends the input sig (tempSignal) to the rest of the signal vector
@@ -86,9 +88,11 @@ for i = 1:nRegions
     else
         signal = [signal tempSig];
     end
+    i = i + 1;
 end
-length(signal)
-length(t_total)
+
+% length(signal)
+% length(t_total)
 figure(1);
 plot(t_total,signal);
 title('signal before operations');
@@ -97,7 +101,7 @@ ylabel('x(t)');
 
 % signal opeartions
 while 1
-    sigOp = input(' 1.amplitude scaling\n 2.time reversal\n 3.time shift\n 4.expansion\n 5.compression\n 6.none\n   Enter number of the wanted signal operation: ');
+    sigOp = input('\n\n 1.amplitude scaling\n 2.time reversal\n 3.time shift\n 4.expansion\n 5.compression\n 6.none\n   Enter number of the wanted signal operation: ');
     switch sigOp
         case 1 
 %            amplitude scaling
@@ -134,3 +138,4 @@ plot(t_total, signal);
 title('signal after operations');
 xlabel('t');
 ylabel('x(t)');
+fprintf('Terminated!');
