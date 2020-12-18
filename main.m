@@ -116,7 +116,7 @@ while 1
         case 4
 %             expansion
               val = input('Enter upsampling value: ');
-              if val < 1
+              if val > 0 && val < 1
                 startVal = t_total(1) / val;
                 endVal = t_total(end) / val;
                 t_total = linspace(startVal, endVal, nSamps);
