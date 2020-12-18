@@ -3,19 +3,32 @@ startTime = input('Enter the start time: ');
 endTime = input('Enter the end time: ');
 nPts = input('Enter the number of breakpoints in the signal: ');
 nRegions = nPts + 1;
-brPts = zeros(1,nPts);
 nSamps = sFreq*(endTime-startTime);
 signal = zeros(1,nSamps);
 t_total = linspace(startTime,endTime,nSamps);
 
 
+
 % gets the postitions of each break point
 if nPts
-    brPts(1) = input('Enter the position of the first breakpoint: ');
-    for i = 2:nPts
-        brPts(i) = input('Enter the position of the next breakpoint: ');
+    brPts = zeros(1,nPts);
+%     handles the checking of most recent brPt > prevBrPt
+    prevBrPt = startTime;
+    i = 1;
+    while i <= nPts
+%     for i = 1:nPts
+        fprintf('Enter the position of the %dth breakpoint: ', i);
+        breakPt = input('');
+        if (i > 1);  prevBrPt = brPts(i-1); end
+        if breakPt >= endTime || breakPt <= prevBrPt
+            fprintf('Invalid Breakpoint\nPlease enter a breakpoint between %d and %d\n',prevBrPt, endTime);
+        else
+            brPts(i) = breakPt;
+            i = i + 1;
+        end
     end
 end
+
 
 % calculates the time interval of each signal region
 for i = 1:nRegions
@@ -86,20 +99,20 @@ ylabel('x(t)');
 while 1
     sigOp = input(' 1.amplitude scaling\n 2.time reversal\n 3.time shift\n 4.expansion\n 5.compression\n 6.none\n   Enter number of the wanted signal operation: ');
     switch sigOp
-        case 1
-    %         amplitude scaling
-    %         peter
+        case 1 
+%            amplitude scaling
+%             peter
         case 2
-    %         time reversal
-    %         peter
+%             time reversal
+%             peter
         case 3
-    %         time shift
+%             time shift
             shift = input('Enter shift value: ');
             t_total = t_total + shift;
         case 4
 %             expansion
         case 5
-%         compression
+%             compression
             val = input('Enter downsampling value: ');
             if val > 1
                 startVal = t_total(1) / val;
@@ -109,7 +122,7 @@ while 1
                 fprint('Please enter a value bigger than 1 for compression operation\n');
             end
         case 6
-    %         none
+%            none
             break
         otherwise
             fprintf('Invalid operation\n To finish select none (6)\n' );
