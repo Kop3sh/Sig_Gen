@@ -1,6 +1,6 @@
 x = input('Enter the sampling frequency: ');
 if (x <= 0)
-    error('Invalid input data\n Enter an int bigger than 0\n');
+    error('Invalid input data... Enter an int bigger than 0');
 else
     sFreq = x;
 end
@@ -8,7 +8,7 @@ startTime = input('Enter the start time: ');
 endTime = input('Enter the end time: ');
 x = input('Enter the number of breakpoints in the signal: ');
 if (x < 0)
-    error('Invalid input data\n Enter an int bigger than 0\n');
+    error('Invalid input data... Enter an int bigger than 0');
 else
     nPts = x;
 end
@@ -27,7 +27,7 @@ if nPts
     i = 1;
     while i <= nPts
 %     for i = 1:nPts
-        fprintf('Enter the position of the %dth breakpoint: ', i);
+        fprintf('\nEnter the position of the %dth breakpoint: ', i);
         breakPt = input('');
         if (i > 1);  prevBrPt = brPts(i-1); end
         if breakPt >= endTime || breakPt <= prevBrPt
@@ -157,4 +157,4 @@ plot(t_total, signal);
 title('signal after operations');
 xlabel('t');
 ylabel('x(t)');
-fprintf('Terminated!');
+fprintf('Terminated!\n');
