@@ -1,6 +1,6 @@
 x = input('Enter the sampling frequency: ');
 if (x <= 0)
-    error('Invalid input data... Enter an int bigger than 0');
+    error('Invalid input data... Enter an number greater than 0');
 else
     sFreq = x;
 end
@@ -8,7 +8,7 @@ startTime = input('Enter the start time: ');
 endTime = input('Enter the end time: ');
 x = input('Enter the number of breakpoints in the signal: ');
 if (x < 0)
-    error('Invalid input data... Enter an int bigger than 0');
+    error('Invalid input data... Enter an integer greater than 0');
 else
     nPts = x;
 end
