@@ -105,10 +105,11 @@ while 1
     switch sigOp
         case 1 
 %            amplitude scaling
-%             peter
+            A= input('enter amplitude');
+            signal = signal * A;
         case 2
 %             time reversal
-%             peter
+              t_total = -1*(t_total);
         case 3
 %             time shift
             shift = input('Enter shift value: ');
