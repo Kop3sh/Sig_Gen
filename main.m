@@ -1,7 +1,7 @@
-sFreq = input('Enter the sampling frequency: ');
+sFreq = inputHandling(input('Enter the sampling frequency: '));
 startTime = input('Enter the start time: ');
 endTime = input('Enter the end time: ');
-nPts = input('Enter the number of breakpoints in the signal: ');
+nPts = inputHandling(input('Enter the number of breakpoints in the signal: '));
 nRegions = nPts + 1;
 nSamps = sFreq*(endTime-startTime);
 signal = zeros(1,nSamps);
@@ -148,3 +148,11 @@ title('signal after operations');
 xlabel('t');
 ylabel('x(t)');
 fprintf('Terminated!');
+
+function y = inputHandling(x)
+    if (x < 0)
+        error('Invalid input data\n Enter an int bigger or equal than 0\n');
+    else
+        y = x;
+    end
+end
